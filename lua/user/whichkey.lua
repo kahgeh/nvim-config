@@ -80,11 +80,12 @@ local n_opts = {
 }
 
 local n_mappings = {
+
   ["b"] = {
     "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "Buffers",
   },
-  ["D"] = { "<cmd>Dashboard<cr>", "Dashboard" },
+  ["D"] = { "<cmd>Alpha<cr>", "Dashboard" },
   ["e"] = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   ["w"] = { "<cmd>w!<CR>", "Save" },
   ["Q"] = { "<cmd>q!<CR>", "Quit" },
@@ -172,16 +173,12 @@ local n_mappings = {
     C = { "<cmd>Telescope commands<cr>", "Commands" },
   },
 
-  t = {
-    name = "Terminal",
-    n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Node" },
-    u = { "<cmd>lua _NCDU_TOGGLE()<cr>", "NCDU" },
-    t = { "<cmd>lua _HTOP_TOGGLE()<cr>", "Htop" },
-    p = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Python" },
-    f = { "<cmd>ToggleTerm direction=float<cr>", "Float" },
-    h = { "<cmd>ToggleTerm size=10 direction=horizontal<cr>", "Horizontal" },
-    v = { "<cmd>ToggleTerm size=80 direction=vertical<cr>", "Vertical" },
-  },
+  H = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", "Harpoon Menu"},
+  m = { "<cmd>lua require('harpoon.mark').add_file()<CR>", "Harpoon Mark" },
+  ["4"] = { "<CMD>lua require('harpoon.ui').nav_file(1)<CR>", "goto1" },
+	["5"] = { "<CMD>lua require('harpoon.ui').nav_file(2)<CR>", "goto2" },
+	["6"] = { "<CMD>lua require('harpoon.ui').nav_file(3)<CR>", "goto3" },
+	["7"] = { "<CMD>lua require('harpoon.ui').nav_file(4)<CR>", "goto4" },
 }
 
 which_key.register(n_mappings, n_opts)

@@ -98,6 +98,9 @@ return packer.startup(function(use)
   -- Navigation
   use "phaazon/hop.nvim"
 
+  -- Markdown
+  use "iamcco/markdown-preview.nvim"
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then
