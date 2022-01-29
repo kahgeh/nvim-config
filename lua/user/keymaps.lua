@@ -60,7 +60,7 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 keymap("x", "<A-j>", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 
--- Hop --
-keymap("n", "<C-s>", ":HopWord<cr>", { silent = true })
-
-
+-- Buffer navigation --
+keymap("n", "<C-s>", ":HopWord<cr>", opts)
+keymap("n", "<A-BS>", "bdw", opts)
+keymap("n", "dd", '"ddd', opts) -- delete shouldn't move update the default register
