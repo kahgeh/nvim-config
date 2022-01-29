@@ -99,7 +99,12 @@ return packer.startup(function(use)
   use "phaazon/hop.nvim"
 
   -- Markdown
-  use "iamcco/markdown-preview.nvim"
+  use {
+    "iamcco/markdown-preview.nvim",
+  	run = "cd app && yarn install",
+    cmd = "MarkdownPreview",
+	  ft = "markdown",
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
