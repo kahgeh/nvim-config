@@ -10,3 +10,5 @@ require "user.lsp.null-ls"
 lspconfig.powershell_es.setup({
 	bundle_path = "/Users/kahgeh.tan/bin/pwsh_es",
 })
+
+
