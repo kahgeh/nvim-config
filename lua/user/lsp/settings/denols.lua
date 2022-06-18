@@ -1,5 +1,4 @@
-local util=require("lspconfig/util")
+local util = require("lspconfig/util")
 return {
-  root_dir =  util.root_pattern 'mod.ts'
+	root_dir = util.root_pattern("deps.ts"),
 }
-
