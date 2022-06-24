@@ -64,6 +64,8 @@ keymap("x", "<A-k>", ":move '<-2<CR>gv-gv", opts)
 keymap("n", "<C-s>", ":HopWord<cr>", opts)
 keymap("n", "<A-BS>", "bdw", opts)
 keymap("n", "d", '"dd', opts) -- delete shouldn't move update the default register
+keymap("i", "<A-BS>", "<ESC>hdaw", opts)
+keymap("i", "<S-BS>", "<ESC>hdaw", opts)
 
 -- LSP --
 keymap("n", "<A-CR>", ":lua vim.lsp.buf.code_actions()<cr>", opts)
