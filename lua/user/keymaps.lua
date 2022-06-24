@@ -66,4 +66,4 @@ keymap("n", "<A-BS>", "bdw", opts)
 keymap("n", "d", '"dd', opts) -- delete shouldn't move update the default register
 
 -- LSP --
-keymap("n", "<A-CR>", ":lua code_actions()<cr>", opts)
+keymap("n", "<A-CR>", ":lua vim.lsp.buf.code_actions()<cr>", opts)
