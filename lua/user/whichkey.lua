@@ -194,6 +194,6 @@ local v_opts = {
 }
 local v_mappings = {
 	r = { '"sy:let @/=@s<cr>cgn', "replace" },
-	["/"] = { "<ESC><CMD>lua require('Comment.api').toggle_linewise_op(vim.fn.visualmode())<CR>", "Comment" },
 }
+
 which_key.register(v_mappings, v_opts)
