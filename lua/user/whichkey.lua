@@ -185,7 +185,7 @@ local n_mappings = {
 which_key.register(n_mappings, n_opts)
 
 local v_opts = {
-	mode = "v", -- NORMAL mode
+	mode = "v", -- visual mode
 	prefix = "<leader>",
 	buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
 	silent = true, -- use `silent` when creating keymaps
