@@ -85,7 +85,8 @@ M.on_attach = function(client, bufnr)
   if client.name == "tsserver" or
     client.name == "denols" or
     client.name == "stylelint_lsp" or
-    client.name == "sumneko_lua" then
+    client.name == "sumneko_lua" or
+    client.name == "jsonls" then
     client.server_capabilities.documentFormattingProvider = false
   end
   lsp_keymaps(bufnr)
