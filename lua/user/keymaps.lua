@@ -68,6 +68,9 @@ keymap("n", "d", '"dd', opts) -- delete shouldn't move update the default regist
 keymap("n", "c", '"dc', opts) -- delete shouldn't move update the default register
 keymap("i", "<A-BS>", "<ESC>hdaw", opts)
 keymap("i", "<S-BS>", "<ESC>hdaw", opts)
+keymap("n", "<DEL>", '"dd1l', opts)
+keymap("i", "<DEL>", '<ESC>l"dd1li', opts)
+keymap("v", "<DEL>", '"dd', opts)
 
 -- LSP --
 keymap("n", "<A-CR>", ":lua vim.lsp.buf.code_actions()<cr>", opts)
