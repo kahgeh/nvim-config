@@ -20,3 +20,5 @@ require "user.indentline"
 require "user.alpha"
 require "user.whichkey"
 require "user.autocommands"
+
+vim.cmd([[ let $PATH .=  $NVIM_BIN]])
