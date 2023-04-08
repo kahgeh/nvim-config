@@ -24,7 +24,7 @@ dashboard.section.buttons.val = {
 }
 
 local function footer()
-	return ""
+	return "10kg"
 end
 
 dashboard.section.footer.val = footer()
@@ -34,5 +34,4 @@ dashboard.section.header.opts.hl = "Include"
 dashboard.section.buttons.opts.hl = "Keyword"
 
 dashboard.opts.opts.noautocmd = true
--- vim.cmd([[autocmd User AlphaReady echo 'ready']])
 alpha.setup(dashboard.opts)
