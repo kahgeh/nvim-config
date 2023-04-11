@@ -32,6 +32,7 @@ configs.setup({
 		"lua",
 		"python",
 		"typescript",
+		"tsx",
 		"css",
 		"rust",
 		"java",
