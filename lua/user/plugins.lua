@@ -95,7 +95,7 @@ return packer.startup(function(use)
 	})
 	use("nvim-treesitter/playground")
 	use("JoosepAlviste/nvim-ts-context-commentstring")
-
+	use("windwp/nvim-ts-autotag")
 	-- Git
 	use("lewis6991/gitsigns.nvim")
 
@@ -114,6 +114,8 @@ return packer.startup(function(use)
 		cmd = "MarkdownPreview",
 		ft = "markdown",
 	})
+
+	use("sQVe/sort.nvim")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
