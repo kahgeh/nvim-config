@@ -17,12 +17,21 @@ configs.setup({
 	highlight = {
 		enable = true, -- false will disable the whole extension
 		disable = { "" }, -- list of language that will be disabled
-		additional_vim_regex_highlighting = true,
+		additional_vim_regex_highlighting = false,
 	},
 	indent = { enable = true, disable = { "yaml" } },
 	context_commentstring = {
 		enable = true,
 		enable_autocmd = false,
+	},
+	incremental_selection = {
+		enable = true,
+		keymaps = {
+			init_selection = "<A-v>",
+			node_incremental = "<A-v>",
+			scope_incremental = "<tab>",
+			node_decremental = "<A-V>",
+		},
 	},
 	ensure_installed = {
 		"bash",
