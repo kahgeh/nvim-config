@@ -1,7 +1,5 @@
 local opts = { noremap = true, silent = true }
 
-local term_opts = { silent = true }
-
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
 
@@ -71,4 +69,3 @@ keymap("i", "<S-BS>", "<ESC>hdaw", opts)
 keymap("n", "<DEL>", '"dd1l', opts)
 keymap("i", "<DEL>", '<ESC>l"dd1li', opts)
 keymap("v", "<DEL>", '"dd', opts)
-
