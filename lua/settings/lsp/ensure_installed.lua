@@ -4,7 +4,7 @@ M.servers = {
   "lua_ls",
   "rust_analyzer",
   "cssls",
-  "omnisharp",
+  "csharp_ls",
   "powershell_es",
   "html",
   "tsserver",
