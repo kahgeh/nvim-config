@@ -20,11 +20,10 @@ function M.config()
   local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
   null_ls.setup({
-    debug = false,
+    debug = true,
     sources = {
       formatting.prettierd,
       formatting.black.with({ extra_args = { "--fast" } }),
-      formatting.stylua,
       formatting.stylelint,
       formatting.shfmt,
       diagnostics.eslint_d,
