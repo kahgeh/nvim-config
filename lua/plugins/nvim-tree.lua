@@ -49,7 +49,7 @@ function M.config()
       },
     },
     view = {
-      width = 30,
+      width = { min = 30, max = 150 },
       side = "left",
       mappings = {
         list = {
