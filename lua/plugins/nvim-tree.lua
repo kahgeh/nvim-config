@@ -38,6 +38,10 @@ function M.config()
         },
       },
     },
+    git = {
+      ignore = false,
+    },
+    ignore = { ".git"},
     diagnostics = {
       enable = true,
       show_on_dirs = true,
