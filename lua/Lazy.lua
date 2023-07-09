@@ -19,10 +19,11 @@ require("lazy").setup("plugins", {
   install = { colorscheme = { require("plugins.colorscheme").name } },
   defaults = { lazy = true },
   ui = { wrap = "true" },
-  change_detection = { enabled = true },
+  change_detection = { enabled = false, notify = false },
   debug = false,
   performance = {
     rtp = {
+      paths = { "/Users/kahgeh.tan/.local/share/nvim/lazy/firenvim" },
       disabled_plugins = {
         -- "gzip", -- Plugin for editing compressed files.
         -- "matchit", -- What is it?
