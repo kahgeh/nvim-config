@@ -175,6 +175,13 @@ local n_mappings = {
     o = { "<cmd>lua require('spectre').open()<cr>", "Open" },
     r = { "<cmd>lua require('spectre.actions').replace_cmd()<cr>", "Apply replace" },
   },
+
+  H = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", "Harpoon Menu" },
+  m = { "<cmd>lua require('harpoon.mark').add_file()<CR>", "Harpoon Mark" },
+  ["4"] = { "<CMD>lua require('harpoon.ui').nav_file(1)<CR>", "goto1" },
+  ["5"] = { "<CMD>lua require('harpoon.ui').nav_file(2)<CR>", "goto2" },
+  ["6"] = { "<CMD>lua require('harpoon.ui').nav_file(3)<CR>", "goto3" },
+  ["7"] = { "<CMD>lua require('harpoon.ui').nav_file(4)<CR>", "goto4" },
 }
 
 local v_opts = {
