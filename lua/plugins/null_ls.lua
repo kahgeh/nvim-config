@@ -24,7 +24,7 @@ function M.config()
     sources = {
       formatting.prettierd,
       formatting.black.with({ extra_args = { "--fast" } }),
-      formatting.stylelint,
+      --formatting.stylelint,
       formatting.shfmt,
       diagnostics.eslint_d,
       code_actions.eslint_d,
@@ -38,6 +38,9 @@ function M.config()
           callback = function()
             vim.lsp.buf.format({
               bufnr = bufnr,
+              filter = function(_client)
+                return _client.name == "null-ls"
+              end
             })
           end,
         })
