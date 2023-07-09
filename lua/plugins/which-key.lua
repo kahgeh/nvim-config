@@ -92,7 +92,6 @@ local n_mappings = {
   ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
   ["C"] = { "<cmd>execute '%bdelete|edit#|bdelete#|NvimTreeToggle'<CR>", "Close All Others" },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
-  ["j"] = { "<cmd>HopWord<CR>", "Jump" },
   ["f"] = {
     "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "Find files",
