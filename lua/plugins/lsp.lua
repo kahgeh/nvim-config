@@ -8,6 +8,7 @@ local M = {
       commit = "0e6b2ed705ddcff9738ec4ea838141654f12eeef",
     },
   },
+  after = {"folke/neodev.nvim"}
 }
 
 local cmp_nvim_lsp = require("cmp_nvim_lsp")

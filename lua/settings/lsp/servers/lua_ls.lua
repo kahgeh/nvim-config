@@ -13,6 +13,9 @@ return {
 			telemetry = {
 				enable = false,
 			},
+      completion = {
+        callSnippet = "Replace",
+      }
 		},
 	},
 }

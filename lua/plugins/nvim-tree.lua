@@ -43,7 +43,7 @@ function M.config()
     },
     filters = {
       custom = {
-        ".git"
+        "\\.git"
       },
     },
     diagnostics = {
