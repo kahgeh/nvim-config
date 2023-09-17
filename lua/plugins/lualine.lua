@@ -39,6 +39,10 @@ function M.config()
     "location",
     padding = 0,
   }
+  local filename = {
+    "filename",
+    path = 1,
+  }
 
   lualine.setup {
     options = {
@@ -51,9 +55,9 @@ function M.config()
     },
     sections = {
       lualine_a = { "mode" },
-      lualine_b = { "branch" },
+      lualine_b = { filename, "branch" },
       lualine_c = { diagnostics },
-      lualine_x = { diff, "filename", "encoding", filetype },
+      lualine_x = { diff, "encoding", filetype },
       lualine_y = { location },
       lualine_z = { "progress" },
     },
