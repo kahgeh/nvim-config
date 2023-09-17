@@ -137,7 +137,6 @@ M.configure_core = function()
     { nargs = 0 })
 
   local n_mappings = {
-    ["D"] = { "<cmd>Alpha<cr>", "Dashboard" },
     ["e"] = { "<cmd>LFGoTo<CR>", "Explore Files" },
     ["w"] = { "<cmd>w!<CR>", "Save" },
     ["Q"] = { "<cmd>qa!<CR>", "Quit" },
