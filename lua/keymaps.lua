@@ -179,10 +179,14 @@ M.configure_core = function()
     },
     H = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", "Harpoon Menu" },
     m = { "<cmd>lua require('harpoon.mark').add_file()<CR>", "Harpoon Mark" },
-    ["4"] = { "<CMD>lua require('harpoon.ui').nav_file(1)<CR>", "goto1" },
-    ["5"] = { "<CMD>lua require('harpoon.ui').nav_file(2)<CR>", "goto2" },
-    ["6"] = { "<CMD>lua require('harpoon.ui').nav_file(3)<CR>", "goto3" },
-    ["7"] = { "<CMD>lua require('harpoon.ui').nav_file(4)<CR>", "goto4" },
+    [" "] = { name = "Goto",
+      ["m"] = { "<CMD>lua require('harpoon.ui').nav_file(1)<CR>", "goto1" },
+      [","] = { "<CMD>lua require('harpoon.ui').nav_file(2)<CR>", "goto2" },
+      ["."] = { "<CMD>lua require('harpoon.ui').nav_file(3)<CR>", "goto3" },
+      ["j"] = { "<CMD>lua require('harpoon.ui').nav_file(4)<CR>", "goto4" },
+      ["k"] = { "<CMD>lua require('harpoon.ui').nav_file(5)<CR>", "goto5" },
+      ["l"] = { "<CMD>lua require('harpoon.ui').nav_file(6)<CR>", "goto6" },
+    }
   }
   local status, which_key = pcall(require, 'which-key')
   if status then
