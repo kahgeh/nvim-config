@@ -44,6 +44,11 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 --  This function gets run when an LSP connects to a particular buffer.
 local on_attach = function(client, bufnr)
   keymaps.configure_lsp(bufnr)
+  buf_name = vim.api.nvim_buf_get_name(bufnr)
+
+  if client.name == "html" and string.match(buf_name, ".cshtml") then
+    client.server_capabilities.documentFormattingProvider = false
+  end
 
   if client.name == "tsserver" then
     client.server_capabilities.documentFormattingProvider = false
