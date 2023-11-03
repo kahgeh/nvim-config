@@ -186,6 +186,9 @@ M.configure_core = function()
       ["j"] = { "<CMD>lua require('harpoon.ui').nav_file(4)<CR>", "goto4" },
       ["k"] = { "<CMD>lua require('harpoon.ui').nav_file(5)<CR>", "goto5" },
       ["l"] = { "<CMD>lua require('harpoon.ui').nav_file(6)<CR>", "goto6" },
+      ["u"] = { "<CMD>lua require('harpoon.ui').nav_file(7)<CR>", "goto7" },
+      ["i"] = { "<CMD>lua require('harpoon.ui').nav_file(8)<CR>", "goto8" },
+      ["o"] = { "<CMD>lua require('harpoon.ui').nav_file(9)<CR>", "goto9" },
     }
   }
   local status, which_key = pcall(require, 'which-key')
