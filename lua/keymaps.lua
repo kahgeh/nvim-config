@@ -80,6 +80,7 @@ M.configure_core = function()
   keymap("n", "<A-BS>", "bdw", opts)
   keymap("n", "d", '"dd', opts) -- delete shouldn't move update the default register
   keymap("n", "c", '"dc', opts) -- delete shouldn't move update the default register
+  keymap("v", "d", '"dd', opts) -- delete shouldn't move update the default register
   keymap("i", "<A-BS>", "<ESC>hdaw", opts)
   keymap("i", "<S-BS>", "<ESC>hdaw", opts)
   keymap("n", "<DEL>", '"dd1l', opts)
@@ -92,25 +93,6 @@ M.configure_core = function()
 
   -- Enable telescope fzf native, if installed
   pcall(require('telescope').load_extension, 'fzf')
-
-  -- See `:help telescope.builtin`
-  vim.keymap.set('n', '<leader>sr', M.oldfiles, { desc = 'Recently opened files' })
-  vim.keymap.set('n', '<leader>so', require('telescope.builtin').buffers, { desc = 'Open files' })
-  vim.keymap.set('n', '<leader>sg', require('telescope.builtin').git_files, { desc = 'Git Files' })
-  vim.keymap.set('n', '<leader>sf', M.find_files, { desc = 'Files' })
-  vim.keymap.set('n', '<leader>sh', require('telescope.builtin').help_tags, { desc = 'Help' })
-  vim.keymap.set('n', '<leader>sw', require('telescope.builtin').grep_string, { desc = 'Current word' })
-  vim.keymap.set('n', '<leader>st', require('telescope.builtin').live_grep, { desc = 'Text' })
-  vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { desc = 'Diagnostics' })
-
-  local n_opts = {
-    mode = "n",     -- NORMAL mode
-    prefix = "<leader>",
-    buffer = nil,   -- Global mappings. Specify a buffer number for buffer local mappings
-    silent = true,  -- use `silent` when creating keymaps
-    noremap = true, -- use `noremap` when creating keymaps
-    nowait = true,  -- use `nowait` when creating keymaps
-  }
 
   vim.api.nvim_create_user_command('LFGoTo',
     function()
@@ -135,66 +117,6 @@ M.configure_core = function()
       vim.wo.foldexpr = ''
     end,
     { nargs = 0 })
-
-  local n_mappings = {
-    ["e"] = { "<cmd>LFGoTo<CR>", "Explore Files" },
-    ["w"] = { "<cmd>w!<CR>", "Save" },
-    ["Q"] = { "<cmd>qa!<CR>", "Quit" },
-    ["c"] = { "<cmd>bdelete<CR>", "Close Buffer" },
-    ["C"] = { "<cmd>execute '%bdelete|edit#|bdelete#|NvimTreeToggle'<CR>", "Close All Others" },
-    ["f"] = { "<cmd>ToggleEnableFold<cr>", "Toggle Fold Feature" },
-    s = {
-      name = "Search"
-    },
-    l = {
-      name = "LSP",
-      a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-      d = {
-        "<cmd>lua vim.diagnostic.open_float()<cr>",
-        "Diagnostics",
-      },
-      w = {
-        "<cmd>Telescope diagnostics<cr>",
-        "Workspace Diagnostics",
-      },
-      f = { "<cmd>lua vim.lsp.buf.format { async = true }  <cr>", "Format" },
-      i = { "<cmd>LspInfo<cr>", "Info" },
-      I = { "<cmd>Mason<cr>", "Installer Info" },
-      j = {
-        "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
-        "Next Diagnostic",
-      },
-      k = {
-        "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>",
-        "Prev Diagnostic",
-      },
-      l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-      q = { "<cmd>lua vim.diagnostic.setloclist()<cr>", "Quickfix" },
-      r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-      s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
-      S = {
-        "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
-        "Workspace Symbols",
-      },
-    },
-    H = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", "Harpoon Menu" },
-    m = { "<cmd>lua require('harpoon.mark').add_file()<CR>", "Harpoon Mark" },
-    [" "] = { name = "Goto",
-      ["m"] = { "<CMD>lua require('harpoon.ui').nav_file(1)<CR>", "goto1" },
-      [","] = { "<CMD>lua require('harpoon.ui').nav_file(2)<CR>", "goto2" },
-      ["."] = { "<CMD>lua require('harpoon.ui').nav_file(3)<CR>", "goto3" },
-      ["j"] = { "<CMD>lua require('harpoon.ui').nav_file(4)<CR>", "goto4" },
-      ["k"] = { "<CMD>lua require('harpoon.ui').nav_file(5)<CR>", "goto5" },
-      ["l"] = { "<CMD>lua require('harpoon.ui').nav_file(6)<CR>", "goto6" },
-      ["u"] = { "<CMD>lua require('harpoon.ui').nav_file(7)<CR>", "goto7" },
-      ["i"] = { "<CMD>lua require('harpoon.ui').nav_file(8)<CR>", "goto8" },
-      ["o"] = { "<CMD>lua require('harpoon.ui').nav_file(9)<CR>", "goto9" },
-    }
-  }
-  local status, which_key = pcall(require, 'which-key')
-  if status then
-    which_key.register(n_mappings, n_opts)
-  end
 end
 
 M.configure_lsp = function(bufnr)
