@@ -24,12 +24,12 @@ require('lazy').setup({
     'neovim/nvim-lspconfig',
     dependencies = {
       -- Automatically install LSPs to stdpath for neovim
-      { 'williamboman/mason.nvim', config = true },
-      { 'williamboman/mason-lspconfig.nvim'},
-        'WhoIsSethDaniel/mason-tool-installer.nvim',
+      { 'williamboman/mason.nvim',          config = true },
+      { 'williamboman/mason-lspconfig.nvim' },
+      'WhoIsSethDaniel/mason-tool-installer.nvim',
       -- Useful status updates for LSP
       -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim',       tag = 'legacy', opts = {} },
+      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
 
       -- Additional lua configuration, makes nvim stuff amazing!
       'folke/neodev.nvim'
@@ -74,6 +74,8 @@ require('lazy').setup({
       { "<leader>c",         "<cmd>bdelete<CR>",                                        desc = "Close Buffer" },
       { "<leader>e",         "<cmd>LFGoTo<CR>",                                         desc = "Explore Files" },
       { "<leader>r",         "<cmd>lua vim.lsp.buf.rename()<cr>",                       desc = "Rename" },
+      { "<leader>D",         'ggvG"dd',                                                 desc = "Clear" },
+      { "<leader>Y",         "<cmd>%y<cr>",                                             desc = "Copy All" },
       -- fold
       { "<leader>f",         "<cmd>ToggleEnableFold<cr>",                               desc = "Toggle Fold Feature" },
       -- lsp
@@ -86,12 +88,12 @@ require('lazy').setup({
       { "<leader>lj",        "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",             desc = "Next Diagnostic" },
       { "<leader>lk",        "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>",             desc = "Prev Diagnostic" },
       { "<leader>ll",        "<cmd>lua vim.lsp.codelens.run()<cr>",                     desc = "CodeLens Action" },
+      { "<leader>lr",        "<cmd>lua vim.lsp.buf.rename()<cr>",                       desc = "Rename" },
 
       { "<leader>q",         "<cmd>lua vim.diagnostic.setloclist()<cr>",                desc = "Quickfix" },
 
       { "<leader>\"",        "viwxi\"\"<esc>P",                                         desc = 'double quotes' },
       { "<leader>\'",        "viwxi''<esc>P",                                           desc = 'single quotes' },
-      { "<leader>x",         "yiwdaw",                                                  desc = 'cut word, remove surround' },
 
       -- telescope search
       { "<leader>so",        "<cmd>lua require('telescope.builtin').buffers()<cr>",     desc = 'Open files' },

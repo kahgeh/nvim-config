@@ -1,6 +1,6 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
-
+vim.g.markdown_fenced_languages = { "ts=typescript" }
 require('setup_lazy')
 require('options')
 local keymaps = require('keymaps')
@@ -148,13 +148,10 @@ mason_lspconfig.setup_handlers {
       on_attach = on_attach,
       capabilities = capabilities,
     }
-    if server_name == "denols" then
-      opts.root_dir = util.root_pattern("mod.ts", "deps.ts")
-    end
     if default_config_ok then
       opts = vim.tbl_deep_extend("force", default_config, opts)
     end
-    local require_ok, conf_opts = pcall(require, "settings.lsp.servers." .. server_name)
+    local require_ok, conf_opts = pcall(require, "settings.lsp." .. server_name)
     if require_ok then
       opts = vim.tbl_deep_extend("force", conf_opts, opts)
     end

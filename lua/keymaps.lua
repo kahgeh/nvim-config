@@ -78,9 +78,11 @@ M.configure_core = function()
 
   -- Buffer navigation --
   keymap("n", "<A-BS>", "bdw", opts)
-  keymap("n", "d", '"dd', opts) -- delete shouldn't move update the default register
-  keymap("n", "c", '"dc', opts) -- delete shouldn't move update the default register
-  keymap("v", "d", '"dd', opts) -- delete shouldn't move update the default register
+  -- prevent from delete using the default register, so that previous copy is not wiped out
+  keymap("n", "d", '"dd', opts)
+  keymap("n", "c", '"dc', opts)
+  keymap("v", "d", '"dd', opts)
+
   keymap("i", "<A-BS>", "<ESC>hdaw", opts)
   keymap("i", "<S-BS>", "<ESC>hdaw", opts)
   keymap("n", "<DEL>", '"dd1l', opts)
