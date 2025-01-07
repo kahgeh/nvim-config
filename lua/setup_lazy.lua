@@ -50,7 +50,6 @@ require('lazy').setup({
       'rafamadriz/friendly-snippets',
     },
   },
-
   {
     'folke/which-key.nvim',
     version = "v3.10.0",
@@ -76,6 +75,12 @@ require('lazy').setup({
       { "<leader>r",         "<cmd>lua vim.lsp.buf.rename()<cr>",                       desc = "Rename" },
       { "<leader>D",         'ggvG"dd',                                                 desc = "Clear" },
       { "<leader>Y",         "<cmd>%y<cr>",                                             desc = "Copy All" },
+
+      -- editing super powers
+      { "<leader>ealn",      ":s/^/\\=(line('.')-line(\"'<\")+0)/",                     desc = "Add line numbers",                              mode = "v" },
+      { "<leader>erc",       ":s/^.\\{0,1\\}//",                                        desc = "Remove character(s) at the start of each line", mode = "v" },
+      { "<leader>ern",       ":s/^\\d*//",                                              desc = "Remove numbers at the start of each line",      mode = "v" },
+
       -- fold
       { "<leader>f",         "<cmd>ToggleEnableFold<cr>",                               desc = "Toggle Fold Feature" },
       -- lsp
@@ -114,7 +119,7 @@ require('lazy').setup({
 
   {
     -- Theme inspired by Atom
-    'lunarvim/darkplus.nvim',
+    'sar/ultra-darkplus.nvim',
     priority = 1000,
     config = function()
       vim.cmd.colorscheme 'darkplus'
