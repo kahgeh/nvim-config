@@ -140,7 +140,9 @@ local mason_lspconfig = require 'mason-lspconfig'
 local util = require("lspconfig.util")
 mason_lspconfig.setup {
   ensure_installed = ensure_installed,
+  automatic_installation = true
 }
+
 mason_lspconfig.setup_handlers {
   function(server_name)
     local default_config_ok, default_config = pcall(require, "lspconfig.server_configurations." .. server_name)
@@ -250,3 +252,17 @@ cmp.setup {
 }
 
 require("settings.which_key")
+
+
+vim.api.nvim_create_user_command("OpenLocation",
+  function(opts)
+    local file_line_column = opts.args
+    local file, line, column = string.match(file_line_column, "([^:]+):(%d+):(%d+)")
+    if file and line and column then
+      vim.api.nvim_command('edit ' .. file)
+      vim.api.nvim_win_set_cursor(0, { tonumber(line), tonumber(column) - 1 })
+    else
+      print("Invalid format. Expected format: file:line:column")
+    end
+  end,
+  { nargs = 1 })
