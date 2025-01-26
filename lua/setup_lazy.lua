@@ -56,7 +56,7 @@ require('lazy').setup({
     opts = {},
     keys = {
       -- harpoon navigation
-      { "<leader>,",         "<cmd>lua require('harpoon.ui').nav_file(2)<CR>",          desc = "goto2" },
+      { "<leader><leader>,", "<cmd>lua require('harpoon.ui').nav_file(2)<CR>",          desc = "goto2" },
       { "<leader><leader>.", "<cmd>lua require('harpoon.ui').nav_file(3)<cr>",          desc = "goto3" },
       { "<leader>i",         "<cmd>lua require('harpoon.ui').nav_file(8)<cr>",          desc = "goto8" },
       { "<leader><leader>j", "<cmd>lua require('harpoon.ui').nav_file(4)<cr>",          desc = "goto4" },
@@ -86,7 +86,7 @@ require('lazy').setup({
       -- lsp
       { "<leader>lI",        "<cmd>Mason<cr>",                                          desc = "Installer Info" },
       { "<leader>lS",        "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",        desc = "Workspace Symbols" },
-      { "<leader>la",        "<cmd>lua vim.lsp.buf.code_action()<cr>",                  desc = "Code Action" },
+      { "<leader>la",        "<cmd>lua vim.lsp.buf.code_action()<cr>",                  desc = "Code Action",                                   mode = { "n", "v" } },
       { "<leader>ld",        "<cmd>lua vim.diagnostic.open_float()<cr>",                desc = "Diagnostics" },
       { "<leader>lf",        "<cmd>lua vim.lsp.buf.format { async = true }  <cr>",      desc = "Format" },
       { "<leader>li",        "<cmd>LspInfo<cr>",                                        desc = "Info" },
@@ -166,6 +166,5 @@ require('lazy').setup({
     },
     build = ':TSUpdate',
   },
-
   { import = 'plugins' },
 }, lazy_opts)
