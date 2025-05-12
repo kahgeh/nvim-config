@@ -62,30 +62,6 @@ local on_attach = function(client, bufnr)
   end, { desc = 'Format current buffer with LSP' })
 end
 
--- Enable the following language servers
---  Feel free to add/remove any LSPs that you want here. They will automatically be installed.
---
---  Add any additional override configuration in the following tables. They will be passed to
---  the `settings` field of the server config. You must look up that documentation yourself.
---
---  If you want to override the default filetypes that your language server will attach to you can
---  define the property 'filetypes' to the map in question.
-local ensure_installed = {
-  "denols",
-  "gopls",
-  "pyright",
-  "omnisharp",
-  "rust_analyzer",
-  "bashls",
-  "cssls",
-  "ts_ls",
-  "jsonls",
-  "powershell_es",
-  "yamlls",
-  "html",
-  "lua_ls",
-}
-
 local signs = {
   { name = "DiagnosticSignError", text = "" },
   { name = "DiagnosticSignWarn", text = "" },
@@ -127,39 +103,12 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
   border = "rounded",
 })
 
--- Setup neovim lua configuration
-require('neodev').setup()
-
 -- nvim-cmp supports additional completion capabilities, so broadcast that to servers
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- Ensure the servers above are installed
 local mason_lspconfig = require 'mason-lspconfig'
-
-local util = require("lspconfig.util")
-mason_lspconfig.setup {
-  ensure_installed = ensure_installed,
-  automatic_installation = true
-}
-
-mason_lspconfig.setup_handlers {
-  function(server_name)
-    local default_config_ok, default_config = pcall(require, "lspconfig.server_configurations." .. server_name)
-    local opts = {
-      on_attach = on_attach,
-      capabilities = capabilities,
-    }
-    if default_config_ok then
-      opts = vim.tbl_deep_extend("force", default_config, opts)
-    end
-    local require_ok, conf_opts = pcall(require, "settings.lsp." .. server_name)
-    if require_ok then
-      opts = vim.tbl_deep_extend("force", conf_opts, opts)
-    end
-    require('lspconfig')[server_name].setup(opts)
-  end
-}
 
 local cmp = require 'cmp'
 local luasnip = require 'luasnip'

@@ -44,3 +44,6 @@ vim.opt.formatoptions:remove({ "c", "r", "o" }) -- This is a sequence of letters
 vim.o.breakindent = true
 vim.opt.linebreak = true
 vim.opt.relativenumber = true
+
+vim.cmd('set guicursor=i:ver30-blinkwait300-blinkon200-blinkoff150')
+

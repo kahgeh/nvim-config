@@ -14,27 +14,43 @@ vim.opt.rtp:prepend(lazypath)
 local lazy_opts = {
   change_detection = { enabled = false, notify = false }
 }
+local ensure_installed = {
+  "denols",
+  "gopls",
+  "pyright",
+  "omnisharp",
+  "rust_analyzer",
+  "bashls",
+  "cssls",
+  "ts_ls",
+  "jsonls",
+  "powershell_es",
+  "yamlls",
+  "html",
+  "lua_ls",
+}
+
 require('lazy').setup({
   -- tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
-  -- NOTE: This is where your plugins related to LSP can be installed.
-  --  The configuration is done below. Search for lspconfig to find it below.
   {
-    -- LSP Configuration & Plugins
-    'neovim/nvim-lspconfig',
-    dependencies = {
-      -- Automatically install LSPs to stdpath for neovim
-      { 'williamboman/mason.nvim',          config = true },
-      { 'williamboman/mason-lspconfig.nvim' },
-      'WhoIsSethDaniel/mason-tool-installer.nvim',
-      -- Useful status updates for LSP
-      -- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-      { 'j-hui/fidget.nvim', tag = 'legacy', opts = {} },
-
-      -- Additional lua configuration, makes nvim stuff amazing!
-      'folke/neodev.nvim'
+    "mason-org/mason.nvim",
+    version = "^2.0.0",
+    build   = ":MasonUpdate", -- optional: keep registry fresh
+    opts    = {},             -- runs require("mason").setup({})
+  },
+  { "neovim/nvim-lspconfig" },
+  {
+    "mason-org/mason-lspconfig.nvim",
+    version      = "^2.0.0",
+    dependencies = { "mason-org/mason.nvim", "neovim/nvim-lspconfig" },
+    opts         = {
+      ensure_installed = ensure_installed, -- your list from elsewhere
+      automatic_enable = true,             -- replaces *automatic_installation*
     },
   },
+  { 'j-hui/fidget.nvim' },
+  { 'folke/lazydev.nvim' },
   {
     -- Autocompletion
     'hrsh7th/nvim-cmp',
@@ -58,7 +74,7 @@ require('lazy').setup({
       -- harpoon navigation
       { "<leader><leader>,", "<cmd>lua require('harpoon.ui').nav_file(2)<CR>",          desc = "goto2" },
       { "<leader><leader>.", "<cmd>lua require('harpoon.ui').nav_file(3)<cr>",          desc = "goto3" },
-      { "<leader>i",         "<cmd>lua require('harpoon.ui').nav_file(8)<cr>",          desc = "goto8" },
+      { "<leader><leader>i", "<cmd>lua require('harpoon.ui').nav_file(8)<cr>",          desc = "goto8" },
       { "<leader><leader>j", "<cmd>lua require('harpoon.ui').nav_file(4)<cr>",          desc = "goto4" },
       { "<leader><leader>k", "<cmd>lua require('harpoon.ui').nav_file(5)<cr>",          desc = "goto5" },
       { "<leader><leader>l", "<cmd>lua require('harpoon.ui').nav_file(6)<cr>",          desc = "goto6" },
@@ -71,9 +87,10 @@ require('lazy').setup({
       { "<leader>w",         "<cmd>w!<CR>",                                             desc = "Save" },
       { "<leader>Q",         "<cmd>qa!<CR>",                                            desc = "Quit" },
       { "<leader>c",         "<cmd>bdelete<CR>",                                        desc = "Close Buffer" },
-      { "<leader>e",         "<cmd>LFGoTo<CR>",                                         desc = "Explore Files" },
+      { "<leader>E",         "<cmd>Explore<CR>",                                        desc = "Explore Files" },
+      { "<leader>e",         "<cmd>LFGoTo<CR>",                                         desc = "Goto Explore Files Pane" },
       { "<leader>r",         "<cmd>lua vim.lsp.buf.rename()<cr>",                       desc = "Rename" },
-      { "<leader>D",         'ggvG"dd',                                                 desc = "Clear" },
+      { "<leader>D",         '<cmd>%d _<cr>',                                           desc = "Clear" },
       { "<leader>Y",         "<cmd>%y<cr>",                                             desc = "Copy All" },
 
       -- editing super powers
@@ -142,8 +159,9 @@ require('lazy').setup({
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim',         opts = {} },
 
+  "JoosepAlviste/nvim-ts-context-commentstring",
   -- Fuzzy Finder (files, lsp, etc)
-  { 'nvim-telescope/telescope.nvim', branch = '0.1.x', dependencies = { 'nvim-lua/plenary.nvim' } },
+  { 'nvim-telescope/telescope.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
 
   -- Fuzzy Finder Algorithm which requires local dependencies to be built.
   -- Only load if `make` is available. Make sure you have the system
